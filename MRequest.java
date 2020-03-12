@@ -20,6 +20,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.*;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 //Libraries imported
 
 //Next to structure request method
@@ -37,7 +39,20 @@ MRequest m_request = new MRequest();
 	    }//while
 		int numRecords = scan.nextInt();
 		scan.close();
-  
+               int i=0;
+		 //For latitude (1)
+		 LinkedHashMap<String, Object> lmap1 = new LinkedHashMap<String, Object>();
+		   //The declaration above was Hashmap not LinkedHashmap
+		   ObjectMapper mapper1 = new ObjectMapper(); 
+		  //For longitude
+		   LinkedHashMap<String, Object> lmap2 = new LinkedHashMap<String, Object>();
+		   ObjectMapper mapper2 = new ObjectMapper();
+		   
+       ArrayList<Double>li1= new ArrayList<Double>();
+       ArrayList<Double>li2= new ArrayList<Double>();
+       ArrayList <Double> resultD= new ArrayList<Double>();
+       BufferedWriter writer1 = new BufferedWriter(new FileWriter("/home/mbans8a1/Final_Work/Test_Folder_Sean/People_living_in_London.txt"));
+       BufferedWriter writer2 = new BufferedWriter(new FileWriter("/home/mbans8a1/Final_Work/Test_Folder_Sean/People_within_50_miles_of_London.txt"));
   
   int i=0;
   
