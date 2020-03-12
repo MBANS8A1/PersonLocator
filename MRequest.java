@@ -29,7 +29,14 @@ import java.time.*;
 
 public static void main(String[] args){
 MRequest m_request = new MRequest();
-  
+  System.out.println ("\nType in how many records would you like to see?");
+		Scanner scan = new Scanner (System.in);
+		while (!scan.hasNextInt()){
+	        scan.nextLine(); //clears any wrong input before prompting again
+	        System.out.print("Please enter a valid number (no fractions/decimals, text or negative numbers)");
+	    }//while
+		int numRecords = scan.nextInt();
+		scan.close();
   
   
   int i=0;
@@ -38,6 +45,7 @@ MRequest m_request = new MRequest();
   while(i<numRecords){
   //numRecords ->get user input (maybe Scanner)
   
+    
   }//while
 
 }//main
