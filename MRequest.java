@@ -22,3 +22,4 @@ import java.net.http.HttpResponse;
 import java.time.*;
 //Libraries imported
 
+//Next to structure request method
