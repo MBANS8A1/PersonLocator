@@ -23,3 +23,21 @@ import java.time.*;
 //Libraries imported
 
 //Next to structure request method
+
+//put bulk of work in main
+//while loop is good
+
+public static void main(String[] args){
+MRequest m_request = new MRequest();
+  
+  
+  
+  int i=0;
+  
+  
+  while(i<numRecords){
+  //numRecords ->get user input (maybe Scanner)
+  
+  }//while
+
+}//main
