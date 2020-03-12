@@ -44,7 +44,20 @@ MRequest m_request = new MRequest();
   
   while(i<numRecords){
   //numRecords ->get user input (maybe Scanner)
-  
+  HttpRequest req1 = HttpRequest.newBuilder().uri(URI.create("https://bpdts-test-app.herokuapp.com/user/"+Integer.toString(i+1)))
+		  .version(HttpClient.Version.HTTP_2)
+		  .header("Accept","application/json")
+		  .timeout(Duration.ofSeconds(10))
+		  .GET()
+		  .setHeader("User-Agent", "Java 11 HttpClient Bot")
+		  .build(); 
+          //.timeout will time the request out after 10 seconds and in case of internet issues
+		  //create a proxy to use the requester to handle the response
+		  HttpResponse<String> resp1 = HttpClient.newBuilder()
+		  .proxy(ProxySelector.getDefault())
+		  .followRedirects(HttpClient.Redirect.ALWAYS)
+		  .build()
+		  .send(req1,HttpResponse.BodyHandlers.ofString());
     
   }//while
 
