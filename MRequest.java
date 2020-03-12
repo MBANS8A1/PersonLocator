@@ -31,6 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public static void main(String[] args){
 MRequest m_request = new MRequest();
+ try{
   System.out.println ("\nType in how many records would you like to see?");
 		Scanner scan = new Scanner (System.in);
 		while (!scan.hasNextInt()){
@@ -124,7 +125,17 @@ MRequest m_request = new MRequest();
 		  i = i+1;
     
   }//while
-
+  writer1.close();
+  writer2.close();
+	   System.out.println("Arraylist Latitudes "+li1);
+	   System.out.println("Arraylist Longitudes "+li2);
+	  }//try
+	 catch(ArrayIndexOutOfBoundsException e) {
+		 System.out.println(e);
+	 }
+	 catch(Exception e){
+	 e.printStackTrace();
+	}//catch
 }//main
 
 //Haversine Formula for getting distance between two locations (points) using the Earth's shortest circular distance in km
