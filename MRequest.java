@@ -58,6 +58,55 @@ MRequest m_request = new MRequest();
 		  .followRedirects(HttpClient.Redirect.ALWAYS)
 		  .build()
 		  .send(req1,HttpResponse.BodyHandlers.ofString());
+	  
+	  //System.out.println("Status Code:"+resp1.statusCode());
+		  //System.out.println("Response Body:"+resp1.body());
+		  //convert the JSON body to a map
+		   HashMap<String, Object> map = new HashMap<String, Object>();
+		   ObjectMapper mapper = new ObjectMapper();
+		   map = mapper.readValue(resp1.body(), new TypeReference<Map<String, Object>>(){});
+		   //Type reference was Map
+		   for(String s : map.keySet()) {
+			   if(map.containsValue("London")) {
+				   System.out.println(s+":" + map.get(s));
+				   writer1.write(s+":" + map.get(s));
+				   writer1.write("\n\n");
+			   }//for
+		  }//for-each loop
+		   lmap1 = mapper1.readValue(resp1.body(), new TypeReference<LinkedHashMap<String, Object>>(){});
+		   lmap2 = mapper2.readValue(resp1.body(), new TypeReference<LinkedHashMap<String, Object>>(){});
+		    li1.add(Double.valueOf((lmap1.get("latitude")).toString()));
+		    li2.add(Double.valueOf((lmap2.get("longitude")).toString()));
+		            
+			 LinkedHashMap<String, Object> lmap3 = new LinkedHashMap<String, Object>();
+				   ObjectMapper mapper3 = new ObjectMapper();
+				   lmap3 = mapper3.readValue(resp1.body(), new TypeReference<LinkedHashMap<String, Object>>(){});
+				   resultD =m_request.Haversine(li2, li1,51.507322,-0.127647);
+				   Iterator<Double> itr1 =resultD.iterator();
+				   /*London Coordinates
+				    *longitude:-0.127647
+				    *latitude:51.507322
+				    *These will be parameters in Haversine 
+				    *Function(the call to it you see above)
+				    */
+				   while(itr1.hasNext()) {
+				    	if(itr1.next()<50.0) {
+				    		for(Map.Entry<String,Object> entry:lmap3.entrySet()){
+								   
+				    			if(entry.getValue()!="London") {
+								 System.out.println(entry.getKey()+":" +entry.getValue());
+								 writer2.write(entry.getKey()+":" +entry.getValue());
+								 writer2.write("\n\n");
+				    			}
+							}//inner for-each
+				    		System.out.println("\n");
+				    		
+				    	 }//if
+				    	
+				    }//while
+				    
+		  //counter to move to the next record	   
+		  i = i+1;
     
   }//while
 
