@@ -62,3 +62,27 @@ MRequest m_request = new MRequest();
   }//while
 
 }//main
+
+//Haversine Formula for getting distance between two locations (points) using the Earth's shortest circular distance in km
+//Return an Array List of distances
+
+public ArrayList<Double> Haversine(ArrayList<Double> lng, ArrayList<Double> lat, double lonLat, double lonLong) {
+	  final double R = 6372.8; //in kilometres
+	  double latitudeLonR = Math.toRadians(lonLat);
+	  ArrayList<Double> lngDiff= new ArrayList<Double>();
+	  ArrayList<Double> latDiff= new ArrayList<Double>();
+	  ArrayList<Double> latconvertRad= new ArrayList<Double>();
+	  ArrayList<Double> aParam= new ArrayList<Double>();
+	  ArrayList<Double> cParam= new ArrayList<Double>();
+	  ArrayList<Double> finalDKilom= new ArrayList<Double>();  
+	  for(int i=0; i<lng.size(); i++) {
+		  lngDiff.add(i, Math.toRadians(lng.get(i)-lonLong));
+		  latDiff.add(i, Math.toRadians(lat.get(i)-lonLat));
+		  latconvertRad.add(i, Math.toRadians(lat.get(i)));
+		  aParam.add(i,Math.pow(Math.sin(latDiff.get(i) / 2),2) + Math.pow(Math.sin(lngDiff.get(i) / 2),2) * Math.cos(latitudeLonR) * Math.cos(latconvertRad.get(i)));
+		  cParam.add(i, 2 * Math.atan2(Math.sqrt(aParam.get(i)), Math.sqrt(1-aParam.get(i))));
+		  finalDKilom.add(i,(((R*cParam.get(i))*4.97097)/8.0));//answers in miles
+		  
+	  }//for
+	      return finalDKilom;
+  }//Haversine
