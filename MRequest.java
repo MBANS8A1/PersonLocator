@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public static void main(String[] args){
 MRequest m_request = new MRequest();
  try{
-  System.out.println ("\nType in how many records would you like to see?");
+  System.out.println ("\nType in how many records would you like to scan?");
 		Scanner scan = new Scanner (System.in);
 		while (!scan.hasNextInt()){
 	        scan.nextLine(); //clears any wrong input before prompting again
