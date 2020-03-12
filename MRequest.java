@@ -65,7 +65,12 @@ MRequest m_request = new MRequest();
 
 //Haversine Formula for getting distance between two locations (points) using the Earth's shortest circular distance in km
 //Return an Array List of distances
-
+/*London Coordinates
+				    *longitude:-0.127647
+				    *latitude:51.507322
+				    *These will be parameters in Haversine 
+				    *Function(the call to it you see above)
+				    */
 public ArrayList<Double> Haversine(ArrayList<Double> lng, ArrayList<Double> lat, double lonLat, double lonLong) {
 	  final double R = 6372.8; //in kilometres
 	  double latitudeLonR = Math.toRadians(lonLat);
