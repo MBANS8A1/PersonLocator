@@ -1,4 +1,4 @@
-# MyHTTPRequester
+# MyHTTPRequester (setup)
 No public commits (this is my work that is done)-for limited eyes only
 
 Install Eclipse and then install Maven and add the dependencies in the pom.xml 
