@@ -1,4 +1,4 @@
-**Location Data for people living in London
+**Location data for people living in London
 
 id:135
 
