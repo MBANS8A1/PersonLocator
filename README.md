@@ -1,4 +1,4 @@
-# MyHTTPRequester (setup)
+# PersonLocator (setup)
 This used Java code in combination with the Maven framework and Haversian formula system to find residents living within a certain range.
 
 Install Eclipse and then install Maven and add the dependencies in the pom.xml of the compressed file I send.
